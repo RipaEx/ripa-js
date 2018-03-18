@@ -3,7 +3,7 @@ ARK has a bounty program for all accepted PR (Pull Requests) for this repository
 
 More information can be found at https://blog.ark.io/ark-github-development-bounty-113806ae9ffe
 
-Before pushing PR, please [jump in our slack #development](https://ark.io/slack) channel in order to discuss your contributions or to connect with other ARKvelopers.
+Before pushing PR, please [jump in our slack #development](https://ripaex.io/slack) channel in order to discuss your contributions or to connect with other RIPA Developers.
 
 # Guidelines
 - pickup any of the existing issues or if you find an issue make a PR,

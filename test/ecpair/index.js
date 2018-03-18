@@ -39,10 +39,10 @@ describe('ECPair', function () {
     it('supports the network option', function () {
       var keyPair = new ECPair(BigInteger.ONE, null, {
         compressed: false,
-        network: NETWORKS.testnet
+        network: NETWORKS.devnet
       })
 
-      assert.strictEqual(keyPair.network, NETWORKS.testnet)
+      assert.strictEqual(keyPair.network, NETWORKS.devnet)
     })
 
     fixtures.valid.forEach(function (f) {
@@ -155,17 +155,17 @@ describe('ECPair', function () {
       var keyPair = ECPair.makeRandom()
 
       assert.strictEqual(keyPair.compressed, true)
-      assert.strictEqual(keyPair.network, NETWORKS.ark)
+      assert.strictEqual(keyPair.network, NETWORKS.ripa)
     })
 
     it('supports the options parameter', function () {
       var keyPair = ECPair.makeRandom({
         compressed: false,
-        network: NETWORKS.testnet
+        network: NETWORKS.devnet
       })
 
       assert.strictEqual(keyPair.compressed, false)
-      assert.strictEqual(keyPair.network, NETWORKS.testnet)
+      assert.strictEqual(keyPair.network, NETWORKS.devnet)
     })
 
     it('loops until d is within interval [1, n - 1] : 1', sinonTest(function () {
