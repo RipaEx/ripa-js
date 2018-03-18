@@ -239,11 +239,10 @@ describe('ECPair', function () {
     })
 
     describe('verify', function () {
-      var signature
-
+      /*
       beforeEach(function () {
-        signature = keyPair.sign(hash)
-      })
+        var signature = keyPair.sign(hash)
+      })*/
 
       // it('wraps ecdsa.verify', sinonTest(function () {
       //   this.mock(ecdsa).expects('verify')

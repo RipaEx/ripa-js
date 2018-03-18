@@ -416,7 +416,7 @@ describe("delegate.js", function () {
       var deserialisedTx = ripajs.crypto.fromBytes(ripajs.crypto.getBytes(trs).toString("hex"));
       delete deserialisedTx.vendorFieldHex;
       var keys = Object.keys(deserialisedTx)
-      for (key in keys) {
+      for (var key in keys) {
         if (keys[key] == "asset") {
           deserialisedTx.asset.delegate.username.should.equal(trs.asset.delegate.username);
         }

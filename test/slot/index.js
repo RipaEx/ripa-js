@@ -1,7 +1,3 @@
-var Buffer = require("buffer/").Buffer;
-var should = require("should");
-var ripajs = require("../../index.js");
-
 describe("slots.js", function () {
 
   var slots = require("../../lib/time/slots.js");

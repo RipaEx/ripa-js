@@ -58,20 +58,20 @@ describe("transaction.js", function () {
     });
 
     it("should fail if transaction with vendorField length > 64", function () {
-      var vf="z";
-      for(i=0;i<6;i++){
-        vf=vf+vf;
+      var vf = "z";
+      for (var i = 0; i < 6; i++) {
+        vf = vf + vf;
       }
-      vf=vf+"z";
+      vf = vf + "z";
       trs = createTransaction("PBKj8VaW61XRWcmnmC1zTnvMfApJ9RyMu2", 1000, vf, "secret");
-      return (trs===null).should.equal(true);
+      return (trs === null).should.equal(true);
 
     });
 
     it("should be ok if transaction with vendorField length = 64", function () {
-      var vf="z";
-      for(i=0;i<6;i++){
-        vf=vf+vf;
+      var vf = "z";
+      for (var i = 0; i < 6; i++) {
+        vf = vf + vf;
       }
       trs = createTransaction("PBKj8VaW61XRWcmnmC1zTnvMfApJ9RyMu2", 1000, vf, "secret");
       (trs).should.be.ok;
@@ -144,8 +144,8 @@ describe("transaction.js", function () {
         deserialisedTx.vendorField = new Buffer(deserialisedTx.vendorFieldHex, "hex").toString("utf8")
         delete deserialisedTx.vendorFieldHex;
         var keys = Object.keys(deserialisedTx)
-        for(key in keys){
-          if(keys[key] != "vendorFieldHex"){
+        for (var key in keys) {
+          if (keys[key] != "vendorFieldHex") {
             deserialisedTx[keys[key]].should.equal(trs[keys[key]]);
           }
         }
@@ -160,14 +160,14 @@ describe("transaction.js", function () {
     });
   });
 
-  describe("createTransaction and try to tamper signature", function(){
+  describe("createTransaction and try to tamper signature", function () {
 
-    it("should not validate overflown signatures", function(){
+    it("should not validate overflown signatures", function () {
       var BigInteger = require('bigi')
       var bip66 = require('bip66')
 
       // custom bip66 encode for hacking away signature
-      function BIP66_encode (r, s) {
+      function BIP66_encode(r, s) {
         var lenR = r.length;
         var lenS = s.length;
         var signature = new Buffer(6 + lenR + lenS);
@@ -201,11 +201,11 @@ describe("transaction.js", function () {
       r = r + result
       */
 
-      result = BigInteger.fromBuffer(Buffer(r.toBuffer(r.toDERInteger().length).toString('hex') + '06', 'hex'));
+      var result = BigInteger.fromBuffer(Buffer(r.toBuffer(r.toDERInteger().length).toString('hex') + '06', 'hex'));
       result = result.subtract(r);
       r = r.add(result);
 
-      new_signature = BIP66_encode(r.toBuffer(r.toDERInteger().length), s.toBuffer(s.toDERInteger().length)).toString('hex');
+      var new_signature = BIP66_encode(r.toBuffer(r.toDERInteger().length), s.toBuffer(s.toDERInteger().length)).toString('hex');
       //
       // console.log("OLD TRANSACTION : ");
       // console.log("TXID " + ripajs.crypto.getId(old_transaction));
@@ -237,10 +237,10 @@ describe("transaction.js", function () {
       (createTransaction).should.be.type("function");
     });
 
-    it("should not accept bitcoin address", function(){
+    it("should not accept bitcoin address", function () {
       try {
         trs = createTransaction("14owCmVDn8SaAFZcLbZfCVu5jvc4Lq7Tm1", 1000, null, "secret", secondSecret);
-      } catch(error){
+      } catch (error) {
         return (error).should.have.property("message").and.equal("Wrong recipientId")
       }
       true.should.equal(false);
@@ -324,7 +324,7 @@ describe("transaction.js", function () {
         var deserialisedTx = ripajs.crypto.fromBytes(ripajs.crypto.getBytes(trs).toString("hex"));
         delete deserialisedTx.vendorFieldHex;
         var keys = Object.keys(deserialisedTx)
-        for(key in keys){
+        for (var key in keys) {
           deserialisedTx[keys[key]].should.equal(trs[keys[key]]);
         }
 

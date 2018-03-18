@@ -60,7 +60,7 @@ describe("vote.js", function () {
 
     it("should create transaction with fee override", function () {
       const feeOverride = 1000000
-      trs = createVote('secret', publicKeys, 'second secret', feeOverride);
+      var trs = createVote('secret', publicKeys, 'second secret', feeOverride);
       (trs).should.be.ok;
       (trs.fee).should.equal(feeOverride)
     });
@@ -68,7 +68,8 @@ describe("vote.js", function () {
     it("should fail to create transaction with invalid fee override", function (done) {
       const feeOverride = '1000000'
       try {
-        trs = createVote('secret', publicKeys, 'second secret', feeOverride);
+        var trs = createVote('secret', publicKeys, 'second secret', feeOverride);
+        (trs).should.be.ok;
         should.fail()
       } catch (error) {
         done()
@@ -79,11 +80,11 @@ describe("vote.js", function () {
       var deserialisedTx = ripajs.crypto.fromBytes(ripajs.crypto.getBytes(vt).toString("hex"));
       delete deserialisedTx.vendorFieldHex;
       var keys = Object.keys(deserialisedTx)
-      for(key in keys){
-        if(keys[key] == "asset"){
+      for (var key in keys) {
+        if (keys[key] == "asset") {
           deserialisedTx.asset.votes[0].should.equal(vt.asset.votes[0]);
         }
-        else{
+        else {
           deserialisedTx[keys[key]].should.equal(vt[keys[key]]);
         }
       }

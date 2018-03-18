@@ -43,7 +43,7 @@ describe("signature.js", function () {
 
     it("should create transaction with fee override", function () {
       const feeOverride = 1000000
-      trs = createSignature('secret', 'second secret', feeOverride);
+      var trs = createSignature('secret', 'second secret', feeOverride);
       (trs).should.be.ok;
       (trs.fee).should.equal(feeOverride)
     });
@@ -51,7 +51,8 @@ describe("signature.js", function () {
     it("should fail to create transaction with invalid fee override", function (done) {
       const feeOverride = '1000000'
       try {
-        trs = createSignature('secret', 'second secret', feeOverride);
+        var trs = createSignature('secret', 'second secret', feeOverride);
+        (trs).should.be.ok;
         should.fail()
       } catch (error) {
         done()
@@ -62,8 +63,8 @@ describe("signature.js", function () {
       var deserialisedTx = ripajs.crypto.fromBytes(ripajs.crypto.getBytes(sgn).toString("hex"));
       delete deserialisedTx.vendorFieldHex;
       var keys = Object.keys(deserialisedTx)
-      for(key in keys){
-        if(keys[key] == "asset"){
+      for (var key in keys) {
+        if (keys[key] == "asset") {
           deserialisedTx.asset.signature.publicKey.should.equal(sgn.asset.signature.publicKey);
         }
         else {

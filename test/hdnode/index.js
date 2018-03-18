@@ -21,7 +21,7 @@ for (var networkName in NETWORKS) {
 
 var validAll = []
 fixtures.valid.forEach(function (f) {
-  function addNetwork (n) {
+  function addNetwork(n) {
     n.network = f.network
     return n
   }
@@ -247,7 +247,7 @@ describe('HDNode', function () {
   })
 
   describe('derive', function () {
-    function verifyVector (hd, v) {
+    function verifyVector(hd, v) {
       if (hd.isNeutered()) {
         assert.strictEqual(hd.toBase58(), v.base58)
       } else {
@@ -299,7 +299,7 @@ describe('HDNode', function () {
       })
 
       // FIXME: test data is only testing Private -> private for now
-      f.children.forEach(function (c, i) {
+      f.children.forEach(function (c) {
         if (c.m === undefined) return
 
         it(c.path + ' from ' + f.master.fingerprint, function () {

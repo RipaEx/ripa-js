@@ -1,4 +1,3 @@
-var Buffer = require("buffer/").Buffer;
 var should = require("should");
 var ripajs = require("../../index.js");
 var constants = require("../../lib/constants.js");
@@ -46,14 +45,14 @@ describe("multisignature.js", function () {
       (sgn).should.be.type("object");
     });
 
-    it ("should have the correct multisignature fee", function () {
+    it("should have the correct multisignature fee", function () {
       sgn = createMultisignature('secret', 'second secret', keysgroup, 255, 2);
       sgn['fee'].should.equal((keysgroup.length + 1) * constants.fees.multisignature);
     });
 
     it("should create transaction with fee override", function () {
       const feeOverride = 1000000
-      trs = createMultisignature('secret', 'second secret', keysgroup, 255, 2, feeOverride);
+      var trs = createMultisignature('secret', 'second secret', keysgroup, 255, 2, feeOverride);
       (trs).should.be.ok;
       (trs.fee).should.equal((keysgroup.length + 1) * feeOverride)
     });
@@ -61,7 +60,8 @@ describe("multisignature.js", function () {
     it("should fail to create transaction with invalid fee override", function (done) {
       const feeOverride = '1000000'
       try {
-        trs = createMultisignature('secret', 'second secret', keysgroup, 255, 2, feeOverride);
+        var trs = createMultisignature('secret', 'second secret', keysgroup, 255, 2, feeOverride);
+        (trs).should.be.ok;
         should.fail()
       } catch (error) {
         done()
@@ -73,8 +73,8 @@ describe("multisignature.js", function () {
       var deserialisedTx = ripajs.crypto.fromBytes(ripajs.crypto.getBytes(sgn).toString("hex"));
       delete deserialisedTx.vendorFieldHex;
       var keys = Object.keys(deserialisedTx)
-      for(key in keys){
-        if(keys[key] == "asset"){
+      for (var key in keys) {
+        if (keys[key] == "asset") {
           deserialisedTx.asset.multisignature.min.should.equal(sgn.asset.multisignature.min);
           deserialisedTx.asset.multisignature.lifetime.should.equal(sgn.asset.multisignature.lifetime);
           deserialisedTx.asset.multisignature.keysgroup.length.should.equal(sgn.asset.multisignature.keysgroup.length);
