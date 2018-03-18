@@ -7,8 +7,8 @@
     "node": ">=4"
   },
   "scripts": {
-    "build:browserify": "browserify index.js -o app.js",
-    "clean:browserify": "shx rm app.js",
+    "build:browserify": "browserify index.js -o ripajs.js",
+    "clean:browserify": "shx rm ripajs.js",
     "build:docs": "jsdoc -c jsdoc.json",
     "clean:docs": "shx rm -r ./docs",
     "lint": "eslint .",
