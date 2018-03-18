@@ -1,7 +1,7 @@
 {
-  "name": "arkjs",
+  "name": "ripajs",
   "version": "0.2.1",
-  "description": "JavaScript library for sending Ark transactions from the client or server",
+  "description": "JavaScript library for sending Ripa transactions from the client or server",
   "main": "index.js",
   "engines": {
     "node": ">=4"
@@ -12,7 +12,19 @@
     "build:docs": "jsdoc -c jsdoc.json",
     "clean:docs": "shx rm -r ./docs",
     "lint": "eslint .",
-    "test": "mocha test/ark.js test/*/*"
+    "test": "mocha test/ripa.js test/*/*",
+    "test:crypto": "mocha test/ripa.js test/crypto/*",
+    "test:ecdsa": "mocha test/ripa.js test/ecdsa/*",
+    "test:ecpair": "mocha test/ripa.js test/ecpair/*",
+    "test:ecsignature": "mocha test/ripa.js test/ecsignature/*",
+    "test:hdnode": "mocha test/ripa.js test/hdnode/*",
+    "test:integration": "mocha test/ripa.js test/integration/*",
+    "test:ipfs": "mocha test/ripa.js test/ipfs/*",
+    "test:multisignature": "mocha test/ripa.js test/multisignature/*",
+    "test:signature": "mocha test/ripa.js test/signature/*",
+    "test:slot": "mocha test/ripa.js test/slot/*",
+    "test:transaction": "mocha test/ripa.js test/transaction/*",
+    "test:vote": "mocha test/ripa.js test/vote/*"
   },
   "directories": {
     "doc": "./doc",
@@ -21,12 +33,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ArkEcosystem/ark-js.git"
+    "url": "git+https://github.com/RipaEx/ripa-js.git"
   },
-  "homepage": "https://github.com/ArkEcosystem/ark-js",
+  "homepage": "https://github.com/RipaEx/ripa-js",
   "keywords": [
     "api",
-    "ark",
+    "ripa",
+    "exchange",
     "blockchain",
     "client",
     "cryptocurrency",
@@ -34,8 +47,9 @@
     "server",
     "transaction"
   ],
-  "bugs": "https://github.com/ArkEcosystem/ark-js/issues",
+  "bugs": "https://github.com/RipaEx/ripa-js/issues",
   "contributors": [
+    "Giovanni Silvestri <gsit80@gmail.com>",
     "FX Thoorens <fx@ark.io>",
     "Guillaume Verbal <doweig@ark.io>",
     "Boris Povod <boris@crypti.me>",

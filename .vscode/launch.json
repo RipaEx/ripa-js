@@ -15,7 +15,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceRoot}/test/ark.js",
+                "${workspaceRoot}/test/ripa.js",
                 "${workspaceRoot}/test/*/*.js"
             ],
             "internalConsoleOptions": "openOnSessionStart"

@@ -1,5 +1,5 @@
 /**
- * @module arkjs
+ * @module ripajs
  * @license MIT
  */
 
