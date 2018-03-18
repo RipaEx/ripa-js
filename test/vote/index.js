@@ -55,7 +55,7 @@ describe("vote.js", function () {
       var tx = createVote(secretKey, publicKeys);
       (tx).should.be.ok;
       (tx).should.be.type("object");
-      (tx).should.have.property("recipientId").and.be.type("string").and.be.equal("AL9uJWA5nd6RWn8VSUzGN7spWeZGHeudg9");
+      (tx).should.have.property("recipientId").and.be.type("string").and.be.equal("PCyCoyhJWPvTgebGDueTt8azenoT5LKdSd");
     });
 
     it("should create transaction with fee override", function () {

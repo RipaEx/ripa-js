@@ -13,7 +13,7 @@ describe('ripa-js (basic)', function () {
     var keyPair = ripajs.ECPair.makeRandom({ rng: rng })
     var address = keyPair.getAddress()
 
-    assert.strictEqual(address, 'ANoMWEJ9jSdE2FgohBLLXeLzci59BDFsP4')
+    assert.strictEqual(address, 'PFcf1hqNTDTGC89aUbzY3f4AkrKKupteyH')
   })
 
   it('can generate an address from a SHA256 hash', function () {
@@ -23,7 +23,7 @@ describe('ripa-js (basic)', function () {
     var keyPair = new ripajs.ECPair(d)
     var address = keyPair.getAddress()
 
-    assert.strictEqual(address, 'AG5AtmiNbgv51eLwAWnRGvkMudVd7anYP2')
+    assert.strictEqual(address, 'P8tUQFFbKTk7BWohwwScnwTY3mjorGbBrv')
   })
 
   it('can generate a random keypair for alternative networks', function () {
@@ -44,7 +44,7 @@ describe('ripa-js (basic)', function () {
     var keyPair = ripajs.ECPair.fromWIF('S9aCCSFvm8kNeyFb1t6pLb5oJs9tv96ag6uA8Du6UM7zsmsNHQiz')
     var address = keyPair.getAddress()
 
-    assert.strictEqual(address, 'AcMiVQNHjggC1PyfVSvCcdWZKMisMKj8eo')
+    assert.strictEqual(address, 'PVB1zsuWTTWEBGSSGsaQ8eDjTVy475WJq8')
   })
 
 })
