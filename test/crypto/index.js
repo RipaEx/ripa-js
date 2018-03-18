@@ -43,7 +43,7 @@ describe("crypto.js", function () {
         type: 0,
         amount: 1000,
         fee: 2000,
-        recipientId: "AJWRd23HNEhPLkK1ymMnwnDBX2a7QBZqff",
+        recipientId: "PBKj8VaW61XRWcmnmC1zTnvMfApJ9RyMu2",
         timestamp: 141738,
         asset: {},
         senderPublicKey: "5d036a858ce89f844491762eb89e2bfbd50a4a0a0da658e4b2628b25b117ae09",
@@ -62,7 +62,7 @@ describe("crypto.js", function () {
         type: 0,
         amount: 1000,
         fee: 2000,
-        recipientId: "AJWRd23HNEhPLkK1ymMnwnDBX2a7QBZqff",
+        recipientId: "PBKj8VaW61XRWcmnmC1zTnvMfApJ9RyMu2",
         timestamp: 141738,
         asset: {},
         senderPublicKey: "5d036a858ce89f844491762eb89e2bfbd50a4a0a0da658e4b2628b25b117ae09",
@@ -94,7 +94,7 @@ describe("crypto.js", function () {
         type: 0,
         amount: 1000,
         fee: 2000,
-        recipientId: "AJWRd23HNEhPLkK1ymMnwnDBX2a7QBZqff",
+        recipientId: "PBKj8VaW61XRWcmnmC1zTnvMfApJ9RyMu2",
         timestamp: 141738,
         asset: {},
         senderPublicKey: "5d036a858ce89f844491762eb89e2bfbd50a4a0a0da658e4b2628b25b117ae09",
@@ -119,12 +119,12 @@ describe("crypto.js", function () {
       (getId).should.be.type("function");
     });
 
-    it("should return string id and be equal to 619fd7971db6f317fdee3675c862291c976d072a0a1782410e3a6f5309022491", function () {
+    it("should return string id and be equal to fadfd463561ffd13637fcc689e2285b9b2379de7c2d865bbeb6aa9945fbb219e", function () {
       var transaction = {
         type: 0,
         amount: 1000,
         fee: 2000,
-        recipientId: "AJWRd23HNEhPLkK1ymMnwnDBX2a7QBZqff",
+        recipientId: "PBKj8VaW61XRWcmnmC1zTnvMfApJ9RyMu2",
         timestamp: 141738,
         asset: {},
         senderPublicKey: "5d036a858ce89f844491762eb89e2bfbd50a4a0a0da658e4b2628b25b117ae09",
@@ -132,7 +132,7 @@ describe("crypto.js", function () {
       };
 
       var id = getId(transaction);
-      (id).should.be.type("string").and.equal("952e33b66c35a3805015657c008e73a0dee1efefd9af8c41adb59fe79745ccea");
+      (id).should.be.type("string").and.equal("fadfd463561ffd13637fcc689e2285b9b2379de7c2d865bbeb6aa9945fbb219e");
     });
   });
 
@@ -148,28 +148,28 @@ describe("crypto.js", function () {
     });
 
     it("should return number", function () {
-      var fee = getFee({amount: 100000, type: 0});
+      var fee = getFee({ amount: 100000, type: 0 });
       (fee).should.be.type("number");
       (fee).should.be.not.NaN;
     });
 
     it("should return 10000000", function () {
-      var fee = getFee({amount: 100000, type: 0});
+      var fee = getFee({ amount: 100000, type: 0 });
       (fee).should.be.type("number").and.equal(10000000);
     });
 
     it("should return 10000000000", function () {
-      var fee = getFee({type: 1});
+      var fee = getFee({ type: 1 });
       (fee).should.be.type("number").and.equal(10000000000);
     });
 
     it("should be equal 1000000000000", function () {
-      var fee = getFee({type: 2});
+      var fee = getFee({ type: 2 });
       (fee).should.be.type("number").and.equal(1000000000000);
     });
 
     it("should be equal 100000000", function () {
-      var fee = getFee({type: 3});
+      var fee = getFee({ type: 3 });
       (fee).should.be.type("number").and.equal(100000000);
     });
   });
@@ -270,7 +270,18 @@ describe("crypto.js", function () {
 
       (address).should.be.ok;
       (address).should.be.type("string");
-      (address).should.be.equal("AJWRd23HNEhPLkK1ymMnwnDBX2a7QBZqff");
+      (address).should.be.equal("PBKj8VaW61XRWcmnmC1zTnvMfApJ9RyMu2");
+    });
+
+    it("should generate address by publicKey - DevNET -", function () {
+      crypto.setNetworkVersion(0x4B);
+      var keys = crypto.getKeys("secret");
+      var address = getAddress(keys.publicKey);
+
+      (address).should.be.ok;
+      (address).should.be.type("string");
+      (address).should.be.equal("XE5npfYGHcnwsHZXFagNAJN6FFyAM542Bh");
+      crypto.setNetworkVersion(0x37);
     });
 
     it("should generate address by publicKey - second test", function () {
@@ -279,7 +290,18 @@ describe("crypto.js", function () {
 
       (address).should.be.ok;
       (address).should.be.type("string");
-      (address).should.be.equal("AQSqYnjmwj1GBL5twD4K9EBXDaTHZognox");
+      (address).should.be.equal("PHG94GGzfVqJMCYfidiWfEthMihUFhN8Rx");
+    });
+
+    it("should generate address by publicKey - second test - DevNET", function () {
+      crypto.setNetworkVersion(0x4B);
+      var keys = crypto.getKeys("secret second test to be sure it works correctly");
+      var address = getAddress(keys.publicKey);
+
+      (address).should.be.ok;
+      (address).should.be.type("string");
+      (address).should.be.equal("XL2CkSEks76phsLQD2NtMkLRworLYkqxdR");
+      crypto.setNetworkVersion(0x37);
     });
 
     it("should generate the same address as ECPair.getAddress()", function () {
@@ -290,6 +312,18 @@ describe("crypto.js", function () {
       var keyPair = new ECPair(null, Q);
 
       (address).should.be.equal(keyPair.getAddress());
+    });
+
+    it("should generate the same address as ECPair.getAddress() - DevNET", function () {
+      crypto.setNetworkVersion(0x4B);
+      var keys = crypto.getKeys("secret second test to be sure it works correctly");
+      var address = getAddress(keys.publicKey);
+
+      var Q = ecurve.Point.decodeFrom(curve, new Buffer(keys.publicKey, 'hex'))
+      var keyPairD = new ECPair(null, Q, { compressed: true, network: ripajs.networks.devnet });
+
+      (address).should.be.equal(keyPairD.getAddress());
+      crypto.setNetworkVersion(0x37);
     });
   });
 
@@ -320,10 +354,10 @@ describe("crypto.js", function () {
 
 describe("different networks", function () {
 
-  it("validate address on tesnet should be ok", function () {
+  it("validate address on devnet should be ok", function () {
     ripajs.crypto.setNetworkVersion(0x4B);
     ripajs.crypto.getNetworkVersion().should.equal(0x4B);
-    var validate = ripajs.crypto.validateAddress("a6fpb1BJZq4otWiVsBcuLG1ZGs5WsqqQtH");
+    var validate = ripajs.crypto.validateAddress("XE5npfYGHcnwsHZXFagNAJN6FFyAM542Bh");
     (validate).should.equal(true);
     ripajs.crypto.setNetworkVersion(0x37);
     ripajs.crypto.getNetworkVersion().should.equal(0x37);
@@ -382,8 +416,8 @@ describe("delegate.js", function () {
       var deserialisedTx = ripajs.crypto.fromBytes(ripajs.crypto.getBytes(trs).toString("hex"));
       delete deserialisedTx.vendorFieldHex;
       var keys = Object.keys(deserialisedTx)
-      for(key in keys){
-        if(keys[key] == "asset"){
+      for (key in keys) {
+        if (keys[key] == "asset") {
           deserialisedTx.asset.delegate.username.should.equal(trs.asset.delegate.username);
         }
         else {
