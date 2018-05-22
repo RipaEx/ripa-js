@@ -1,4 +1,4 @@
-![RIPA JavaScript](./banner_medium_js_jpg)
+![RIPA JavaScript](./banner_medium_js.jpg)
 
 
 [![Build Status](https://travis-ci.org/RipaEx/ripa-js.svg?branch=master)](https://travis-ci.org/RipaEx/ripa-js)
